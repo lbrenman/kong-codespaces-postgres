@@ -1,0 +1,42 @@
+{
+  "name": "Kong + Postgres (Docker Compose)",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "postCreateCommand": "docker compose up -d",
+  "forwardPorts": [
+    8000,
+    8001,
+    8443,
+    8444,
+    5432
+  ],
+  "portsAttributes": {
+    "8000": {
+      "label": "Kong Proxy (HTTP)",
+      "onAutoForward": "openBrowser"
+    },
+    "8001": {
+      "label": "Kong Admin API (HTTP)",
+      "visibility": "private"
+    },
+    "8443": {
+      "label": "Kong Proxy (HTTPS)"
+    },
+    "8444": {
+      "label": "Kong Admin API (HTTPS)",
+      "visibility": "private"
+    },
+    "5432": {
+      "label": "Postgres",
+      "visibility": "private"
+    }
+  }
+}

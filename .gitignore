@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Node / JS (just in case you add tooling)
+node_modules/
+
+# Python (just in case)
+__pycache__/
+*.pyc
+
+# Docker
+**/.docker/
