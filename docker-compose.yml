@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   kong-db:
     image: postgres:16
@@ -20,7 +18,8 @@ services:
       - "5432:5432"
 
   kong-migrations:
-    image: kong:3.13
+    # Kong OSS is published as the Docker Official Image "kong"
+    image: kong:3.9.1
     container_name: kong-migrations
     depends_on:
       kong-db:
@@ -35,7 +34,7 @@ services:
     restart: "no"
 
   kong:
-    image: kong:3.13
+    image: kong:3.9.1
     container_name: kong
     depends_on:
       kong-migrations:

@@ -1,11 +1,18 @@
 # Kong Gateway (OSS) + Postgres — GitHub Codespaces-ready
 
-This repo runs **Kong Gateway (open-source image)** backed by **PostgreSQL** using Docker Compose — designed to work cleanly in **GitHub Codespaces**.
+This repo runs **Kong Gateway (open-source / Docker Official Image: `kong`)** backed by **PostgreSQL** using Docker Compose — designed to work cleanly in **GitHub Codespaces**.
 
-> Notes
-> - Kong proxy: `8000` (HTTP) / `8443` (HTTPS)
-> - Kong Admin API: `8001` (HTTP) / `8444` (HTTPS) — **keep these ports private** in Codespaces.
-> - Postgres is exposed on `5432` only for convenience (you can comment it out in `docker-compose.yml`).
+Why you hit `manifest not found`:
+- The image tag `kong:3.13` doesn’t exist on Docker Hub for the official OSS image.
+- The Docker Official Image for Kong lists recent supported tags like `3.9.1`, `3.9`, and `latest` (which currently points at 3.x).
+
+This repo pins Kong to `kong:3.9.1` and Postgres to `postgres:16`.
+
+## Ports
+
+- Kong proxy: `8000` (HTTP) / `8443` (HTTPS)
+- Kong Admin API: `8001` (HTTP) / `8444` (HTTPS) — **keep these ports private** in Codespaces.
+- Postgres: `5432` (optional exposure; comment it out in `docker-compose.yml` if you want)
 
 ## Quick start (Codespaces)
 
@@ -56,14 +63,9 @@ Stop and delete data (fresh start):
 docker compose down -v
 ```
 
-## Version pins
-
-This repo pins Kong to `kong:3.13` and Postgres to `postgres:16` in `docker-compose.yml`.
-If you want to use a different Kong tag, update both `kong` and `kong-migrations` services.
-
 ## Troubleshooting
 
-### "migrations" failed
+### Migrations failed
 Reset and try again:
 
 ```bash
