@@ -2,10 +2,6 @@
 
 This repo runs **Kong Gateway (open-source / Docker Official Image: `kong`)** backed by **PostgreSQL** using Docker Compose — designed to work cleanly in **GitHub Codespaces**.
 
-Why you hit `manifest not found`:
-- The image tag `kong:3.13` doesn’t exist on Docker Hub for the official OSS image.
-- The Docker Official Image for Kong lists recent supported tags like `3.9.1`, `3.9`, and `latest` (which currently points at 3.x).
-
 This repo pins Kong to `kong:3.9.1` and Postgres to `postgres:16`.
 
 ## Ports
